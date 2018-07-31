@@ -8,7 +8,6 @@ Settings for using vim as a IDE
 3. Install plugins using vundle
    Launch vim and run :PluginInstall
    
-   
-* make systags and cpptags for autoproto.vim plugin.
- ○ $ ctags -R --sort=1 --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ -f ~/.vim/cpptags /usr/include/c++
- ○ $ ctags -R -f ~/.vim/systags --c-kinds=+p /usr/include /usr/local/include
+4. make systags and cpptags for autoproto.vim plugin.
+  - $ ctags -R --sort=1 --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ -f ~/.vim/cpptags /usr/include/c++
+  - $ ctags -R -f ~/.vim/systags --c-kinds=+p /usr/include /usr/local/include
