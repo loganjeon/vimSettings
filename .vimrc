@@ -660,11 +660,14 @@ let delimitMate_matchpairs = "(:),[:],{:}"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for Clang complete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('macunix')
 " for MacOS path
 let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+else
 " for Linux path
 "let g:clang_library_path='/usr/lib/llvm-3.8/lib/libclang.so'
-"let g:clang_library_path='/usr/lib64/llvm/libclang.so'
+let g:clang_library_path='/usr/lib64/llvm/libclang.so'
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
