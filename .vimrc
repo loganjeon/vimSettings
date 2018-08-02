@@ -665,8 +665,8 @@ let g:mwDefaultHighlightingNum = 9
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
 set background=dark
-colorscheme solarized
-let g:solarized_termcolors = 256
+colorscheme benokai
+"let g:solarized_termcolors = 256
 "let g:solarized_contrast = "high"
 "let g:solarized_visibility = "high"
 
