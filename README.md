@@ -27,8 +27,10 @@ If you wanna use oh-my-zsh, install zsh and oh-my-zsh before.
    
 and Check other tools out which have configuring this repo, like screen, tmux, tig, cscope, universal-ctags, ag an so on before setting up this configure
 1. Install other tools
-   - (on ubuntu) $ sudo apt install cscope universal-ctags screen tmux tig silversearcher-ag pkg-config llvm vim
-   - (on mac) $ brew install cscope universal-ctags screen tmux tig the_silver_searcher pkg-config llvm macvim
+   - (on ubuntu) $ sudo apt install cscope ctags screen tmux tig silversearcher-ag pkg-config llvm vim
+   - (on mac) $ brew install cscope ctags screen tmux tig the_silver_searcher pkg-config llvm macvim
+   if use universal-ctags
+   - (on mac) $ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 2. for Integration with vscode, try installing and using vscode(visual studio code)
    - https://code.visualstudio.com/
    - Install plugin "Open in Vim" and setting up.
