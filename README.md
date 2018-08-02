@@ -29,7 +29,8 @@ and Check other tools out which have configuring this repo, like screen, tmux, t
 1. Install other tools
    - (on ubuntu) $ sudo apt install cscope ctags screen tmux tig silversearcher-ag pkg-config llvm vim
    - (on mac) $ brew install cscope ctags screen tmux tig the_silver_searcher pkg-config llvm macvim
-   if use universal-ctags
+   
+if you want to use universal-ctags
    - (on mac) $ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 2. for Integration with vscode, try installing and using vscode(visual studio code)
    - https://code.visualstudio.com/
