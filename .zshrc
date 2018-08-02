@@ -3,7 +3,7 @@
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/ygjeon/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -85,13 +85,16 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ctags"`brew --prefix`/bin/ctags"
+# alias ctags="`brew --prefix`/bin/ctags"
 
 # for Vim Custom
-alias vi='mvim -v'
-export CPPTOOLS_DEV=1
+if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
+	alias vi='mvim -v'
+	export CPPTOOLS_DEV=1
+	test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+fi
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # for color of vim airline theme
 export TERM=xterm-256color
+
