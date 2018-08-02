@@ -72,6 +72,11 @@ endif
 
 endif
 
+" Not redraw while executing macros, and commands.
+set lazyredraw
+" Load plugins when starting up
+set loadplugins
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 편집 기능 설정
@@ -168,23 +173,27 @@ set ut=5000
 set uc=100
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 검색 기능 설정
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Search
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Highlight all matches
+set hlsearch
 
-" 검색어 강조 기능
-set hls
+" Not search wrap around the end of a file
+set nowrapscan
 
-" 검색시 파일 끝에서 처음으로 되돌리기 안함
-set nows
+" Ignore case in search patterns
+set ignorecase
 
-" 검색시 대소문자를 구별하지 않음
-set ic
+" Override ignorecase option if the search pattern contains an uppercase
+" character.
+set smartcase
 
-" 똑똑한 대소문자 구별 기능 사용
-set scs
-
+" Show where the pattern matches as it was typed so far.
 set incsearch
+
+" Jump to one to the other using %. Various character can be added.
+set matchpairs+=<:>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 모양 설정
@@ -235,7 +244,7 @@ filet plugin indent on
 "au BufRead,BufNewFile *.dic setl ft=php
 
 " 파일 형식에 따른 Syntax Highlighting 기능을 켠다
-sy enable
+"sy enable
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -265,115 +274,6 @@ au FileType javascript,jsp setl cin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 컬러 스킴 (:colo desert)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_running")
-	" Vim color file
-	" Maintainer:   Hans Fugal <hans@fugal.net>
-	" Last Change:  $Date: 2005/02/17 03:34:26 $
-	" URL:		http://hans.fugal.net/vim/colors/desert.vim
-
-	" cool help screens
-	" :he group-name
-	" :he highlight-groups
-	" :he cterm-colors
-
-	set background=dark
-	if version > 580
-		" no guarantees for version 5.8 and below, but this makes it stop
-		" complaining
-		hi clear
-		if exists("syntax_on")
-		syntax reset
-		endif
-	endif
-	let g:colors_name="desert"
-
-	hi Normal	guifg=White guibg=grey20
-
-	" highlight groups
-	hi Cursor	guibg=khaki guifg=slategrey
-	"hi CursorIM
-	"hi Directory
-	"hi DiffAdd
-	"hi DiffChange
-	"hi DiffDelete
-	"hi DiffText
-	"hi ErrorMsg
-	hi VertSplit	guibg=#c2bfa5 guifg=grey50 gui=none
-	hi Folded	guibg=grey30 guifg=gold
-	hi FoldColumn	guibg=grey30 guifg=tan
-	hi IncSearch	guifg=slategrey guibg=khaki
-	"hi LineNr
-	hi ModeMsg	guifg=goldenrod
-	hi MoreMsg	guifg=SeaGreen
-	hi NonText	guifg=LightBlue guibg=grey30
-	hi Question	guifg=springgreen
-	hi Search	guibg=peru guifg=wheat
-	hi SpecialKey	guifg=yellowgreen
-	hi StatusLine	guibg=#c2bfa5 guifg=black gui=none
-	hi StatusLineNC	guibg=#c2bfa5 guifg=grey50 gui=none
-	hi Title	guifg=indianred
-	hi Visual	gui=none guifg=khaki guibg=olivedrab
-	"hi VisualNOS
-	hi WarningMsg	guifg=salmon
-	"hi WildMenu
-	"hi Menu
-	"hi Scrollbar
-	"hi Tooltip
-
-	" syntax highlighting groups
-	hi Comment	 guifg=SkyBlue
-	hi Constant	 guifg=#ffa0a0
-	hi Identifier	 guifg=palegreen
-	hi Statement	 guifg=khaki
-	hi PreProc	 guifg=indianred
-	hi Type		 guifg=darkkhaki
-	hi Special	 guifg=navajowhite
-	"hi Underlined
-	hi Ignore	 guifg=grey40
-	"hi Error
-	hi Todo		 guifg=orangered guibg=yellow2
-
-	" color terminal definitions
-	hi SpecialKey	 ctermfg=darkgreen
-	hi NonText	 cterm=bold ctermfg=darkblue
-	hi Directory	 ctermfg=darkcyan
-	hi ErrorMsg	 cterm=bold ctermfg=7 ctermbg=1
-	hi IncSearch	 cterm=NONE ctermfg=yellow ctermbg=green
-	hi Search	 cterm=NONE ctermfg=grey ctermbg=blue
-	hi MoreMsg	 ctermfg=darkgreen
-	hi ModeMsg	 cterm=NONE ctermfg=brown
-	hi LineNr	 ctermfg=3
-	hi Question	 ctermfg=green
-	hi StatusLine	 cterm=bold,reverse
-	hi StatusLineNC  cterm=reverse
-	hi VertSplit	 cterm=reverse
-	hi Title	 ctermfg=5
-	hi Visual	 cterm=reverse
-	hi VisualNOS	 cterm=bold,underline
-	hi WarningMsg	 ctermfg=1
-	hi WildMenu	 ctermfg=0 ctermbg=3
-	hi Folded	 ctermfg=darkgrey ctermbg=NONE
-	hi FoldColumn	 ctermfg=darkgrey ctermbg=NONE
-	hi DiffAdd	 ctermbg=4
-	hi DiffChange	 ctermbg=5
-	hi DiffDelete	 cterm=bold ctermfg=4 ctermbg=6
-	hi DiffText	 cterm=bold ctermbg=1
-	hi Comment	 ctermfg=darkcyan
-	hi Constant	 ctermfg=brown
-	hi Special	 ctermfg=5
-	hi Identifier	 ctermfg=6
-	hi Statement	 ctermfg=3
-	hi PreProc	 ctermfg=5
-	hi Type		 ctermfg=2
-	hi Underlined	 cterm=underline ctermfg=5
-	hi Ignore	 cterm=bold ctermfg=7
-	hi Error	 cterm=bold ctermfg=7 ctermbg=1
-else
-" 사용하는 터미널 종류에 따라 밝음, 어두움을 설정
-" 자고로 터미널은 어두운겨 -ㅅ-
-	"set bg=dark "light
-	highlight PmenuSel ctermfg=white ctermbg=DarkRed
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 단축키 설정
@@ -544,10 +444,10 @@ endf
 fu! ToggleSpell()
 	let &l:spell = 1 - &l:spell
 endf
-map \n :call ToggleNu()<CR>
-map \l :call ToggleList()<CR>
-map \p :call TogglePaste()<CR>
-map \s :call ToggleSpell()<CR>
+"map \n :call ToggleNu()<CR>
+"map \l :call ToggleList()<CR>
+"map \p :call TogglePaste()<CR>
+"map \s :call ToggleSpell()<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -571,39 +471,6 @@ set lpl
 
 " unix dos mac 줄 변경자 모두 다 읽을 수 있도록 합니다.
 set ffs=unix,dos,mac
-
-" matchadd() priority -1 means 'hlsearch' will override the match.
-function! DoHighlight(hlnum, search_term)
-  call UndoHighlight(a:hlnum)
-  if len(a:search_term) > 0
-    let id = matchadd("hl".a:hlnum, a:search_term, -1)
-    let g:matchadd_ids[a:hlnum] = id
-  endif
-endfunction
-
-function! UndoHighlight(hlnum)
-  silent! call matchdelete(g:matchadd_ids[a:hlnum])
-endfunction
-
-function! SetHighlight(hlnum, colour, bgcolour, guibgcolour)
-  if len(a:colour) > 0
-    exe "highlight hl".a:hlnum." term=bold ctermfg=".a:colour." ctermbg=".a:bgcolour." guifg=".a:colour." guibg=".a:guibgcolour
-  endif
-endfunction
-
-let g:matchadd_ids = {}
-call SetHighlight(1, 'Yellow','DarkRed','DarkRed')
-call SetHighlight(2, 'black','Yellow','Yellow')
-call SetHighlight(3, 'DarkRed','Yellow','Yellow')
-call SetHighlight(4, 'black','DarkBlue','DarkBlue')
-call SetHighlight(5, 'black','Grey','Grey')
-call SetHighlight(6, 'black','cyan','DeepSkyBlue')
-call SetHighlight(7, 'white','DarkRed','firebrick')
-call SetHighlight(8, 'black','DarkGreen','DarkGreen')
-call SetHighlight(9, 'white','DarkBlue','DarkSlateBlue')
-nnoremap <Leader>ma :<C-u>call DoHighlight(v:count1, expand("<cword>"))<CR>
-nnoremap <Leader>md :<C-u>call UndoHighlight(v:count1)<CR>
-nnoremap <Leader>mc :<C-u>call SetHighlight(v:count1, input("Enter colour: "))<CR>
 
 "use absolute path for cscope
 "set nocsre
@@ -707,7 +574,7 @@ let  g:C_UseTool_doxygen = 'yes'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for Color Scheme Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:molokai_original = 1
+"let g:molokai_original = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for gutentags_plus
@@ -782,6 +649,28 @@ let g:airline_symbols.notexists = ''
 autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" for colorscheme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" switch to a richer palette of up to 18 colors
+let g:mwDefaultHighlightingPalette = 'extended'
+" switch to a richer palette of up to 27, 58 or even 77, 
+" depending on the number of available colors
+"let g:mwDefaultHighlightingPalette = 'maximum'
+
+" restrict color number via
+let g:mwDefaultHighlightingNum = 9
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" for colorscheme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax enable
+set background=dark
+colorscheme solarized
+let g:solarized_termcolors = 256
+"let g:solarized_contrast = "high"
+"let g:solarized_visibility = "high"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
@@ -845,6 +734,9 @@ Plugin 'beautify-web/js-beautify'
 "Plugin 'skywind3000/gutentags_plus'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'inkarkat/vim-ingo-library'
+Plugin 'inkarkat/vim-mark'
+Plugin 'flazz/vim-colorschemes'
 
 
 " All of your Plugins must be added before the following line
