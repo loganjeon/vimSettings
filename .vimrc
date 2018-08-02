@@ -742,20 +742,43 @@ let g:NERDTreeWinPos='right'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_powerline_fonts = 1
+let g:airline_enable_branch = 1
+let g:airline_enable_syntastic = 1
 let g:airline_theme='dark'
 "let g:airline_solarized_bg='dark'
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#formatter = 'unique_tail'
-"let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_section_b = '%{strftime("%c")}'
+let g:airline_section_y = 'BN: %{bufnr("%")}'
+
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
-let g:airline_symbols.branch = ''
-let g:airline_symbols.linenr = ''
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+set laststatus=2
+"let g:airline_symbols.branch = ''
+"let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
 let g:airline_section_error  = ''
 let g:airline_section_warning = ''
 let g:airline_symbols.notexists = ''
+
+"set background=light
 autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
