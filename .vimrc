@@ -649,16 +649,16 @@ let g:airline_symbols.notexists = ''
 autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" for colorscheme
+" for vim-mark
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " switch to a richer palette of up to 18 colors
-let g:mwDefaultHighlightingPalette = 'extended'
+"let g:mwDefaultHighlightingPalette = 'extended'
 " switch to a richer palette of up to 27, 58 or even 77, 
 " depending on the number of available colors
-"let g:mwDefaultHighlightingPalette = 'maximum'
+let g:mwDefaultHighlightingPalette = 'maximum'
 
 " restrict color number via
-let g:mwDefaultHighlightingNum = 9
+"let g:mwDefaultHighlightingNum = 9
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for colorscheme
@@ -668,8 +668,8 @@ set background=dark
 "colorscheme benokai
 colorscheme solarized
 let g:solarized_termcolors = 256
-"let g:solarized_contrast = "high"
-"let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+let g:solarized_visibility = "high"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for vundle
