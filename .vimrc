@@ -317,7 +317,8 @@ func! Man()
 endfunc
 
 map <F1> :call Man()<cr>
-map <F2> :w!<cr>
+"map <F2> :w!<cr>
+map <F2> :!cscope -qb<cr> :cscope reset<cr>
 " Make ctags for c++
 map <F3> :!ctags -R --verbose=yes --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "map <F3> :TrinityToggleNERDTree<cr>
@@ -658,14 +659,13 @@ autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
 let g:mwDefaultHighlightingPalette = 'maximum'
 
 " restrict color number via
-"let g:mwDefaultHighlightingNum = 9
+"let g:mwDefaultHighlightingNum = 10
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for colorscheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
 set background=dark
-"colorscheme benokai
 colorscheme solarized
 let g:solarized_termcolors = 256
 let g:solarized_contrast = "high"
