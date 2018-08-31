@@ -662,6 +662,16 @@ let g:mwDefaultHighlightingPalette = 'maximum'
 "let g:mwDefaultHighlightingNum = 10
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" for DirDiff
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:DirDiffExcludes = "CVS,*.class,*.o,,cscope.files,cscope.out,tags,.git"
+"let g:DirDiffIgnore = "Id:,Revision:,Date:"
+"let g:DirDiffWindowSize = 14
+" ignore white space in diff
+"let g:DirDiffAddArgs = "-w"
+"let g:DirDiffEnableMappings = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for colorscheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
@@ -738,6 +748,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'inkarkat/vim-ingo-library'
 Plugin 'inkarkat/vim-mark'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'will133/vim-dirdiff'
 
 
 " All of your Plugins must be added before the following line
