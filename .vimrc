@@ -512,6 +512,14 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+""" if you want to use clang with llvm """
+let g:syntastic_cpp_checkers = ['clang++']
+let g:syntastic_cpp_compiler = 'clang++'
+let g:systastic_cpp_compiler_options = '-std=c++14 -stdlib=libc++'
+""" else if you want use GNU C++ """
+"let g:syntastic_cpp_checkers = ['g++']
+"let g:syntastic_cpp_compiler = 'g++'
+"let g:systastic_cpp_compiler_options = '-std=c++14' 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for Vim-markdown
@@ -569,8 +577,10 @@ set tags+=~/.vim/tags/cpptags
 " for C Vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype plugin on
-let  g:C_UseTool_cmake    = 'yes'
-let  g:C_UseTool_doxygen = 'yes'
+let g:C_UseTool_cmake    = 'yes'
+let g:C_UseTool_doxygen = 'yes'
+let g:C_CFlags	= '-Wall -g -O0 -c -std=c++14'
+let g:C_LFlags	= '-Wall -g -O0 -std=c++14'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for Color Scheme Plugins
@@ -749,6 +759,7 @@ Plugin 'inkarkat/vim-ingo-library'
 Plugin 'inkarkat/vim-mark'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'will133/vim-dirdiff'
+Plugin 'tomlion/vim-solidity'
 
 
 " All of your Plugins must be added before the following line
