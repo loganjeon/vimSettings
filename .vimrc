@@ -513,7 +513,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 """ if you want to use clang with llvm """
-let g:syntastic_cpp_checkers = ['clang++']
+let g:syntastic_cpp_checkers = ['clang-check', 'clang-tidy', 'gcc']
 let g:syntastic_cpp_compiler = 'clang++'
 let g:systastic_cpp_compiler_options = '-std=c++14 -stdlib=libc++'
 """ else if you want use GNU C++ """
@@ -542,7 +542,8 @@ let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/
 else
 " for Linux path
 "let g:clang_library_path='/usr/lib/llvm-3.8/lib/libclang.so'
-let g:clang_library_path='/usr/lib64/llvm/libclang.so'
+"let g:clang_library_path='/usr/lib64/llvm/libclang.so'
+let g:clang_library_path='/usr/lib/llvm-6.0/lib/libclang.so'
 endif
 
 
