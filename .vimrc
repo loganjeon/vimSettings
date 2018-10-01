@@ -513,7 +513,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 """ if you want to use clang with llvm """
-let g:syntastic_cpp_checkers = ['clang-check', 'clang-tidy', 'gcc']
+"let g:syntastic_cpp_checkers = ['clang-check', 'clang-tidy', 'gcc']
+let g:syntastic_cpp_checkers = ['clang-check']
 let g:syntastic_cpp_compiler = 'clang++'
 let g:systastic_cpp_compiler_options = '-std=c++14 -stdlib=libc++'
 """ else if you want use GNU C++ """
