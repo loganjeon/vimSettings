@@ -9,7 +9,7 @@ Settings for using vim as a IDE
    - Launch vim and run :PluginInstall
    
 4. make systags and cpptags for autoproto.vim plugin
-   - $ ctags -R --sort=1 --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ -f ~/.vim/cpptags /usr/include/c++
+   - $ ctags -R --sort=1 --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ -f ~/.vim/cpptags /usr/local/include/c++/[version]
    - $ ctags -R -f ~/.vim/systags --c-kinds=+p /usr/include /usr/local/include
 
 If you wanna use oh-my-zsh, install zsh and oh-my-zsh before.
@@ -31,6 +31,7 @@ and Check other tools out which have configuring this repo, like screen, tmux, t
    - (on mac) $ brew install cscope ctags screen tmux tig the_silver_searcher pkg-config llvm macvim
    
 if you want to use universal-ctags
+   - $ brew remove ctags
    - (on mac) $ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 2. for Integration with vscode, try installing and using vscode(visual studio code)
    - https://code.visualstudio.com/
