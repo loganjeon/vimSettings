@@ -614,6 +614,34 @@ let g:tagbar_left = 1
 let g:tagbar_width = 30
 let g:tagbar_sort = 0
 
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set NERDTree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -762,6 +790,7 @@ Plugin 'inkarkat/vim-mark'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'will133/vim-dirdiff'
 Plugin 'tomlion/vim-solidity'
+Plugin 'fatih/vim-go'
 
 
 " All of your Plugins must be added before the following line
