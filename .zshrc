@@ -63,6 +63,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
+export LC_ALL=ko_KR.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -104,3 +105,14 @@ export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 test -d "${GOPATH}" || mkdir "${GOPATH}"
 test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+
+# Conda environment
+export PATH="/usr/local/anaconda3/bin:$PATH"
+
+# sdbctl environment
+export PATH="/Users/ygjeon/Projects/tview_proj/sdbctl/dist/sdbctl-0.1.0:$PATH"
+
+# for tview cda
+export CDA_BASE_PATH="${HOME}/cda-bin"
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/libffi/lib/pkgconfig"
+
