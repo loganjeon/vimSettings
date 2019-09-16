@@ -791,6 +791,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'will133/vim-dirdiff'
 Plugin 'tomlion/vim-solidity'
 Plugin 'fatih/vim-go'
+Plugin 'ekalinin/dockerfile.vim'
 
 
 " All of your Plugins must be added before the following line
