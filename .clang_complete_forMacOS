@@ -1,0 +1,14 @@
+-DDEBUG
+-I/usr/local/include/c++/8.2.0/backward
+-I/usr/local/include/c++/8.2.0/bits
+-I/usr/local/include/c++/8.2.0/decimal
+-I/usr/local/include/c++/8.2.0/parallel
+-I/usr/local/include/c++/8.2.0
+-I/usr/local/include
+-I/usr/include/sys
+-I/usr/include/netinet
+-I/usr/include/linux
+-I/usr/include/net
+-I/usr/include/pcap
+-I/usr/include/bits
+-I/usr/include
