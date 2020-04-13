@@ -522,6 +522,10 @@ let g:systastic_cpp_compiler_options = '-std=c++14 -stdlib=libc++'
 "let g:syntastic_cpp_compiler = 'g++'
 "let g:systastic_cpp_compiler_options = '-std=c++14' 
 
+""" default Syntastic mode """ 
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for Vim-markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -793,6 +797,9 @@ Plugin 'tomlion/vim-solidity'
 Plugin 'fatih/vim-go'
 Plugin 'ekalinin/dockerfile.vim'
 Plugin 'AnsiEsc.vim'
+Plugin 'rizzatti/dash.vim'
+Plugin 'vhdirk/vim-cmake'
+Plugin 'pboettch/vim-cmake-syntax'
 
 
 " All of your Plugins must be added before the following line
