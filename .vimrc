@@ -800,6 +800,7 @@ Plugin 'AnsiEsc.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'vhdirk/vim-cmake'
 Plugin 'pboettch/vim-cmake-syntax'
+Plugin 'klen/python-mode'
 
 
 " All of your Plugins must be added before the following line
