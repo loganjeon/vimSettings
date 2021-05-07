@@ -223,10 +223,11 @@ if has("gui_running")
 		set gfn=굴림체:h9:cHANGEUL
 "		set gfn=GulimChe:h9:cHANGEUL
 	elseif has("unix")
-		set gfn=monospace\ 9
+		set gfn=monospace\ 10
 	endif
 "	set gfn=Jung9\ 9
 "	set gfn=Fixedsys:h12:cHANGEUL
+	set guifont=Menlo\ Regular:h12
 endif
 
 " 줄 간격 설정
@@ -483,23 +484,23 @@ set noautochdir
 " for silver searcher ag
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " The Silver Searcher
-"if executable('ag')
+if executable('ag')
     " Use ag over grep
-    "set grepprg=ag\ --nogroup\ --nocolor
+    set grepprg=ag\ --nogroup\ --nocolor
 
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 	" ag is fast enough that CtrlP doesn't need to cache
-    "let g:ctrlp_use_caching = 0
-"endif
+    let g:ctrlp_use_caching = 0
+endif
 
 " bind K to grep word under cursor
 nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " bind \ (backward slash) to grep shortcut
-"command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-"nnoremap \ :Ag<SPACE>
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for Syntastic
@@ -776,7 +777,6 @@ Plugin 'c.vim'
 Plugin 'autoproto.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'tomasr/molokai'
 Plugin 'rhysd/vim-clang-format'
@@ -793,7 +793,6 @@ Plugin 'inkarkat/vim-ingo-library'
 Plugin 'inkarkat/vim-mark'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'will133/vim-dirdiff'
-Plugin 'tomlion/vim-solidity'
 Plugin 'fatih/vim-go'
 Plugin 'ekalinin/dockerfile.vim'
 Plugin 'AnsiEsc.vim'

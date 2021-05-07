@@ -115,4 +115,6 @@ export PATH="/Users/ygjeon/Projects/tview_proj/sdbctl/dist/sdbctl-0.1.0:$PATH"
 # for tview cda
 export CDA_BASE_PATH="${HOME}/cda-bin"
 export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/libffi/lib/pkgconfig"
+# for trouble shooting error about git submodule
+export GIT_INTERNAL_GETTEXT_TEST_FALLBACKS=1
 
