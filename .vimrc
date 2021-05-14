@@ -1,49 +1,39 @@
 scripte utf-8
 " vim: set fenc=utf-8 tw=0:
-" 파일의 첫부분에 위의 2줄을 꼭 남겨 두십시오.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 인클루드의 Vim 설정 파일
-" 마지막 수정: 2006-01-17 04:29:44 KST
-" $Id: .vimrc 112 2006-01-16 19:30:18Z barosl $
+"""""""""""""""""""""""" Vim Configuration """""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 프로그램 기본 설정
+" Basic Configuration 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 오리지널 Vi 와의 호환성을 없애고, Vim 만의 기능들을 쓸 수 있게 함.
 set nocp
 
-" 모든 옵션을 원래대로 복원
+" Restore all options to default
 set all&
 
-" 명령어 기록을 남길 갯수 지정
+" History count
 set hi=100
 
-" 백스페이스 사용
+" for using backspace
 set bs=indent,eol,start
 
-" 인코딩 설정
-" 문서를 읽을 때 BOM 을 자동으로 제거하려면, fencs 맨 앞에 ucs-bom 를 추가하세요.
-"let &tenc=&enc
-"set enc=utf-8
+" Character encoding configuration
 set fencs=utf-8,cp949,cp932,euc-kr,shift-jis,big5,ucs-2le,latin1
 set enc=utf-8
 
-" 홈 디렉토리가 존재할 때에만 사용할 수 있는 기능들
+" Funcion if existing home directory
 if exists("$HOME")
 
-" 홈 디렉토리를 구한다.
-" 특정 시스템에서는 홈 디렉토리 경로 끝에 / 또는 \ 문자가
-" 붙어 있기 때문에, 그것들을 제거한다.
 	let s:home_dir = $HOME
 	let s:temp = strpart(s:home_dir,strlen(s:home_dir)-1,1)
 	if s:temp == "/" || s:temp == "\\"
 		let s:home_dir = strpart(s:home_dir,0,strlen(s:home_dir)-1)
 	endif
 
-" 경로 설정
+" Path configuration
 if has("win32")
 	let s:dir_tmp = s:home_dir."/_vim/tmp"
 	let s:dir_backup = s:home_dir."/_vim/backup"
@@ -52,7 +42,7 @@ else
 	let s:dir_backup = s:home_dir."/.vim/backup"
 endif
 
-" 임시 디렉토리 설정
+" Temp directory configuration
 	if isdirectory(s:dir_tmp)
 		set swf
 		let &dir = s:dir_tmp
@@ -61,7 +51,7 @@ endif
 		set dir=.
 	endif
 
-" 백업 디렉토리 설정
+" Backup directory configuration
 	if isdirectory(s:dir_backup)
 		set bk
 		let &bdir = s:dir_backup
@@ -79,22 +69,22 @@ set loadplugins
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 편집 기능 설정
+" Editing feature configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 커서의 위치를 항상 보이게 함.
+" Always display see cursor location
 set ru
 
-" 완성중인 명령을 표시
+" Display command which completing
 set sc
 
-" 줄 번호 표시
+" Display line number
 set nu
 
-" 줄 번호 표시 너비 설정
+" Configure width of line number
 set nuw=5
 
-" 탭 크기 설정
+" Configure tab
 set ts=4
 set sw=4
 set et
@@ -109,67 +99,62 @@ set cst
 set nocsverb
 
 
-" 탭 -> 공백 변환 기능 (사용 안함)
+" Convert tab to space feature (off)
 set noet
 set sts=0
 
-" 자동 줄바꿈 안함
+" Auto line feed (off)
 set nowrapscan
 
-" 마지막 편집 위치 복원 기능
+" Restore location of last editing
 au BufReadPost *
 \ if line("'\"") > 0 && line("'\"") <= line("$") |
 \   exe "norm g`\"" |
 \ endif
 
-" gVim 을 사용중일 경우 클립보드를 unnamed 레지스터로 매핑
-" xterm_clipboard 기능이 있을 때에도 매핑 가능
+" Mapping clip-board to unnamed register for using gVim and xterm
 if has("gui_running") || has("xterm_clipboard")
 	set cb=unnamed
 endif
 
-" magic 기능 사용
+" Use magic feature
 set magic
 
-" 여러 가지 이동 동작시 줄의 시작으로 자동 이동
+" Automatic moving to starting in line for some moving operation 
 set sol
 
-" 비주얼 모드에서의 동작 설정
+" Configure for visual mode
 set sel=exclusive
 
-" SHIFT 키로 선택 영역을 만드는 것을 허용
-" 영역 상태에서 Ctrl+F,B 로 이동하면 영역이 해제되어 버려서 해제
+" Permit to making selected region using shift key
 "set km=startsel,stopsel
 
-" 가운데 마우스 버튼으로 붙여넣기 하는 것을 무효화한다.
+" Off the feature which paste using middle mouse button
 map <MiddleMouse> <Nop>
 map! <MiddleMouse> <Nop>
 
-" 괄호짝 찾기 기능에 사용자 괄호 종류를 더한다.
+" add '<', '>' in find feature 
 set mps+=<:>
 
-" 새로 추가된 괄호의 짝을 보여주는 기능
 "set sm
 
-" Insert 키로 paste 상태와 nopaste 상태를 전환한다.
-" 함수 방식으로 바꾸었다. 자세한 것은 아래로~
+" Using insert key for paste mode
 "set pt=<Ins>
 
-" 키 입력 대기시간을 무제한으로, 그러나 key codes 에 대해서는 예외
+" No timeout for waiting key input
 set noto ttimeout
 
-" 키 입력 대기시간 설정 (milliseconds) (ttm 을 음수로 설정하면 tm 을 따라감)
+" Configure waiting time for key input
 set tm=3000 ttm=100
 
-" 영역이 지정된 상태에서 Tab 과 Shift-Tab 으로 들여쓰기/내어쓰기를 할 수 있도록 함.
+" Using tab key fnd shift+tab key for indent
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 
-" 입력이 중단된 후 얼마 후에 swap 파일을 쓸 것인지와
-" CursorHold 이벤트의 대기시간을 설정 (milliseconds)
+" Waiting time for making swap file
 set ut=5000
 
-" 몇 글자를 입력받으면 swap 파일을 쓸 것인지 설정
+" Minimum character for making swap file
 set uc=100
 
 
@@ -199,25 +184,19 @@ set matchpairs+=<:>
 " 모양 설정
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" GUI 이면, 시작시 크기 설정
+" Configure font for GUI mode
 if has("gui_running")
 	set lines=50
 	set co=125
 endif
 
-" 시작시 전체화면으로 설정
-" 이제 이것도 귀찮아졌다...!
-if has("win32")
-"	au GUIEnter * simalt ~x
-endif
-
-" 추적 수준을 최대로
+" Tracking level to maximum
 set report=0
 
-" 항상 status 라인을 표시하도록 함.
+" Always display status line
 set ls=2
 
-" 폰트 설정
+" Configure font
 if has("gui_running")
 	if has("win32")
 		set gfn=굴림체:h9:cHANGEUL
@@ -230,71 +209,51 @@ if has("gui_running")
 	set guifont=Menlo\ Regular:h12
 endif
 
-" 줄 간격 설정
+" Configure line spacing
 set lsp=1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" filetype 기능 & Syntax Highlighting 기능
+" filetype feature & Syntax Highlighting feature
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 파일의 종류를 자동으로 인식
+" Auto recognition kind of file
 filet plugin indent on
 
-" 몇몇 커스텀 확장자들에게 파일 형식 설정
+" Configure file type for custom file extension
 "au BufRead,BufNewFile *.dic setl ft=php
 
-" 파일 형식에 따른 Syntax Highlighting 기능을 켠다
+" Enableing syntas highlighting feature through file type
 "sy enable
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" indent 설정
+" Indent configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 자동 들여쓰기 사용 안함
+" No use auto indent
 set noai
 
-" 똑똑한 들여쓰기 사용 안함
+" No use smart indent
 set nosi
 
-" 내장된 indent 파일이 없어서 C indent 를 사용하는 경우
+" Use C indent
 au FileType javascript,jsp setl cin
 
-" 각 언어의 표준 indent 를 사용하는 경우
-" 수동 추가하기가 귀찮아져서 결국 자동 인식으로 바꿨다.
-"au FileType c,cpp,html,vim,java,sh,python,xml,perl,xf86conf,conf,apache
-"\ if expand("<amatch>") != "" |
-"\   if exists("b:did_indent") |
-"\		unlet b:did_indent |
-"\   endif |
-"\ runtime! indent/<amatch>.vim |
-"\ endif
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 컬러 스킴 (:colo desert)
+" Color scheme (:colo desert)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 단축키 설정
+" Shortcut configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 상용구 설정
+" Boilerplate configuration
 iab xdate <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 iab xtime <C-R>=strftime("%H:%M:%S")<CR>
-"iab xname 인클루드
 
-" BufExplorer 플러그인 (스크립트 번호: 42)
-" :ls 와 :b 에 익숙해져서 이젠 필요없다...
-"nnoremap <silent> <F5> :BufExplorer<CR>
-
-" Vim 자체 Explore 기능
-" :E 라는 게 있었군...
-"nnoremap <silent> <F6> :Explore<CR>
-
-" Vim 정규식이 아닌 진짜 정규식 사용을 의무화(?)
-" \v 라는 글자가 항상 표시되니까 햇갈린다... -.-
+" for real regular expression not only vim regex
 "map / /\v
 
 func! Tj()
@@ -363,58 +322,50 @@ map ,w :bw<cr>
 "endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" GUI 간소화
+" GUI Simplification
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "if has("gui_running")
 if 0
 
-" gVim 메뉴를 사용하지 않는다. 대부분의 명령보다 선행되어야 한다.
-"	let did_install_default_menus = 1
-"	let did_install_syntax_menu = 1
-"	let skip_syntax_sel_menu = 1
-" 설정 방식이 바뀌었다.
+" Don't use gVim menu
 	set go-=m
 
-" 툴바를 보이지 않게 한다.
+" Don't display toolbar
 	set go-=T
 
-" 스크롤바를 표시하지 않는다.
+" Don't display scrollbar
 	set go-=l
 	set go-=L
 	set go-=r
 	set go-=R
 	set go-=b
 
-" GUI 여서 마우스가 사용 가능하면...
-" 마우스를 사용하지 않는다. (누르면 이동되는게 귀찮다!)
-"	set mouse=a
-""	set mouse=
+" Don't use mouse 
 	set mouse=nicr
 
-" 마우스 모델을 popup 으로 함.
+" Set mouse model to popup
 	set mousem=popup
 
-" '간단한 선택' 다이얼로그가 새 창에서 뜨지 않도록...
+" Don't popup 'simple choice' dialog
 	set go+=c
 
 endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 편리한 기능
+" Convenient feature
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Tab 자동 완성시 가능한 목록을 보여줌
+" Auto-complete using tab key
 set wmnu
 
-" 파일 탐색기 설정
+" File explore configuration파일 탐색기 설정
 let g:explVertical=1
 let g:explSplitRight=1
 let g:explStartRight=1
 let g:explWinSize=20
 
-" vim -b : xxd 포맷으로 바이너리 파일을 수정합니다! (:help hex-editing)
-" ...너무 ㅂㅌ적인 방법인 것 같아서 주석처리;
+" vim -b : Edit binary file as xxd format (:help hex-editing)
 "augroup Binary
 "	au!
 "	au BufReadPre  *.bin let &bin=1
@@ -426,11 +377,11 @@ let g:explWinSize=20
 "	au BufWritePost *.bin set nomod | endif
 "augroup END
 
-" Spell Checking 기능 (영어)
-" 기본적으로는 비활성화
+" Spell Checking feature 
+" unable default
 set nospell spelllang=en
 
-" 각종 toggle 기능
+" some toggle feature
 fu! ToggleNu()
 	let &nu = 1 - &nu
 endf
@@ -450,24 +401,16 @@ endf
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 기타 설정
+" etc configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 매크로 실행중에 화면을 다시 그리지 않음
+" Don't redraw while excuting macro
 set lz
 
-" 프로그램 시작시 플러그인 로드
+" Load plugins when start program
 set lpl
 
-"noeol 설정
-"au BufNew * set bin | set noeol
-"set bin | set noeol
-
-" ㅂㅌ barosl 은 모든 플랫폼에서 unix 줄 변경자를 쓰겠습니다! ..orz
-" 경고: 만일 당신의 vim 이 '정상적으로' 동작하길 원하시면,
-" 바로 다음줄은 주석처리 하거나 없애세요. -.-;;
-"set ff=unix
-
+" set ff=unix
 " unix dos mac 줄 변경자 모두 다 읽을 수 있도록 합니다.
 set ffs=unix,dos,mac
 
