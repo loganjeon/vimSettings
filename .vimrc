@@ -322,19 +322,16 @@ map <F1> :call Man()<cr>
 map <F2> :!cscope -qb<cr> :cscope reset<cr>
 " Make ctags for c++
 map <F3> :!ctags -R --verbose=yes --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-"map <F3> :TrinityToggleNERDTree<cr>
-"map <F4> :SrcExplToggle<cr> 
-map <F4> :TrinityToggleNERDTree<cr>
-map <F5> :TagbarToggle<cr>
+map <F4> :TagbarToggle<cr>
+map <F5> :NERDTreeToggle<cr>
+map <F6> :TrinityToggleSourceExplorer<cr> :set statusline=%F<cr>
 "map <F6> :TrinityToggleAll<cr>
-"map <F5> :TrinityToggleAll<cr> :set statusline=%F<cr>
-"map <F6> :TrinityToggleSourceExplorer<cr> :set statusline=%F<cr>
-"map <F7> :TrinityToggleTagList<cr>
-"map <F8> :TrinityToggleNERDTree<cr>
-map <F6> :call Tj()<cr>
+"map <F6> :TrinityToggleAll<cr> :set statusline=%F<cr>
+"map <F6> :call Tj()<cr>
 map <F7> :call SplitTj()<cr>
 map <F8> :call VertSplitTj()<cr>
-map <F9> v]}zf
+map <F9> :call Tj()<cr>
+"map <F9> v]}zf
 map <F10> :BufExplorer<cr>
 map <C-n> :tabnew<cr>
 map <C-h> gT
@@ -698,13 +695,13 @@ autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
 " for vim-mark
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " switch to a richer palette of up to 18 colors
-"let g:mwDefaultHighlightingPalette = 'extended'
+let g:mwDefaultHighlightingPalette = 'extended'
 " switch to a richer palette of up to 27, 58 or even 77, 
 " depending on the number of available colors
 let g:mwDefaultHighlightingPalette = 'maximum'
 
 " restrict color number via
-"let g:mwDefaultHighlightingNum = 10
+"let g:mwDefaultHighlightingNum = 100
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for DirDiff
@@ -757,12 +754,12 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L10
 "Plugin 'user/L9', {'name': 'newL9'}
 " Installed Plugins
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
 Plugin 'rking/ag.vim'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'eikenb/acp'
-"Plugin 'wesleyche/srcexpl'
+Plugin 'wesleyche/srcexpl'
 Plugin 'taglist.vim'
 Plugin 'wesleyche/trinity'
 Plugin 'scrooloose/syntastic'
@@ -799,7 +796,8 @@ Plugin 'AnsiEsc.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'vhdirk/vim-cmake'
 Plugin 'pboettch/vim-cmake-syntax'
-Plugin 'klen/python-mode'
+"Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
 
 
 " All of your Plugins must be added before the following line
@@ -823,6 +821,11 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :command! OpenInVSCode exe "silent !code --goto '%:" . line(".") . ":" . col(".") . "'" | redraw!
 :command! OpenCwdInVSCode exe "silent !code '" . getcwd() . "' --goto '%:" . line(".") . ":" . col(".") . "'" | redraw!
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" for excution MarkSave with viminfo
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set viminfo+=!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " End of File
