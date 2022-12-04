@@ -62,8 +62,9 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-export LC_ALL=ko_KR.UTF-8
+#export LANG=en_US.UTF-8
+#export LC_ALL=ko_KR.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -114,7 +115,44 @@ export PATH="/Users/ygjeon/Projects/tview_proj/sdbctl/dist/sdbctl-0.1.0:$PATH"
 
 # for tview cda
 export CDA_BASE_PATH="${HOME}/cda-bin"
-export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/libffi/lib/pkgconfig"
+#export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/libffi/lib/pkgconfig"
+
+# for NVM
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# for pyenv
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
+export PYENV_PATH=$HOME/.pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+# for pyenv trouble shooting
+#export GREP_OPTIONS = '- color = auto'
+
+# for istioctl
+export PATH=${HOME}/Projects/opensources_devops/istio-1.4.2/bin:$PATH
+source ~/_istioctl
+
+# for mysql-client
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
 # for trouble shooting error about git submodule
 export GIT_INTERNAL_GETTEXT_TEST_FALLBACKS=1
 
+# For compilers to find zlib you may need to set:
+export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
+export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+
+# For pkg-config to find zlib you may need to set:
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
+
+# For Ruby environment and Jekyll dev environment
+eval "$(rbenv init -)"
+export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+
+# For Maven
+#export PATH="$PATH:/opt/apache-maven/bin"
